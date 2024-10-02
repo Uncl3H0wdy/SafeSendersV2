@@ -1,19 +1,5 @@
 Connect-ExchangeOnline
 
-function ValidateMailBox {
-    param ([string] $mbxToValidate)
-    $timer = 0
-    while($true){
-        try{
-            Get-EXOMailbox -Identity $mbxToValidate -ErrorAction Stop
-            Write-Host "The mailbox has been validated" -ForegroundColor Green
-            break
-        }catch{  
-            Write-Error "Could not find the mailbox"
-            break           
-        }
-    }
-}
 $target
 $trustedSender
 while($true){
@@ -28,7 +14,6 @@ while($true){
         Write-Host "$target does not exist please enter a valid mailbox" -ForegroundColor Red
     }
 }
-
 
 $All = Get-Mailbox $target
 
